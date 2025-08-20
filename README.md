@@ -1,33 +1,6 @@
 # codeFusion
-A collection of my learnings and projects from various courses and books.
+Study hub for my course- and book-based projects.
 
-
-# 📘 Hands-On Machine Learning — Study Repository
-
-This repository contains my notes, code, and exercises as I work through the book  
-**_Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow_** by Aurélien Géron.
-
-The goal is to document my progress, deepen understanding, and build hands-on experience in applied machine learning and deep learning using Python.
-
----
-
-## 📂 Structure
-
-All learning content from the book is organized in the `hands-on-ml` folder. Each chapter has its own subdirectory containing:
-
-- 📓 Jupyter notebooks with code and explanations  
-- 🗒️ Notes and key takeaways  
-- ✅ Exercises and solutions (where applicable)
-
----
-
-```
-CodeFusion
-├── hands-on-ml
-│   ├── Chapter1
-│   ├── Chapter2
-│   ├── ...
-│   └── README.md
-└── ...
-└── README.md
-```
+## Projects
+- **Hands-On Machine Learning(Book)**: Notes, notebooks, and exercises while reading Aurélien Géron’s book. See `hands-on-ml/README.md`.
+- **Go — The Complete Guide (Udemy)**: Small Go programs and notes while taking the course. See `go-the-complete-guide/README.md`.

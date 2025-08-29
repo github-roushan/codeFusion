@@ -123,7 +123,7 @@ SET user:100 "Roushan"
 ```
 
 Notes:
-- Maximum allowed key size is 512 MB.
+- Maximum allowed string value size is 512 MB.
 - Redis keys are binary-safe; any binary sequence is valid.
 - An empty string is also a valid key.
 

@@ -49,3 +49,24 @@ const dog = {
 }
 
 dog.speak();
+
+const spices = [
+    {name: "Emma", nickname: "Baby"},
+    {name: "Roushan", nickname: "procoder"}
+]
+
+console.log(spices[1].name)
+
+function multiply(a, b) {
+    return a*b;
+}
+
+multiply(2, 3);
+
+const yell = function (saying) {
+    return saying.toLocaleUpperCase();
+}
+
+console.log(yell("foo bar"))
+
+var newVarible = "hello"

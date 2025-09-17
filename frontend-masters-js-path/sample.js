@@ -44,7 +44,7 @@ const dog = {
     name: "Ein",
     breed: "Corgi",
     speak: function() {
-        console.log("woof woof");
+        console.log(this.name + ": " + "woof woof");
     }
 }
 

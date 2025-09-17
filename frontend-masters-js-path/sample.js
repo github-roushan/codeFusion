@@ -9,3 +9,8 @@ if (js.isAwesome) {
 }
 
 console.log(js)
+
+firstName = "Roushan"
+lastName = "Singh"
+fullName = firstName + lastName
+console.log(fullName)

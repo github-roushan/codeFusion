@@ -35,4 +35,7 @@ operands[1] = 2343;
 // not ok
 // operands = [1, 2343];
 
-console.log(operandsi)
+console.log(operands)4
+
+// we can a new property on object
+js.creator = "Brendan Eich";

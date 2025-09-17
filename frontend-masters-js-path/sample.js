@@ -26,3 +26,13 @@ console.log(synonyms);
 
 let lastItem = synonyms.pop();
 console.log(lastItem)
+
+
+const operands = [1,4];
+//  ok
+operands[1] = 2343;
+
+// not ok
+// operands = [1, 2343];
+
+console.log(operandsi)

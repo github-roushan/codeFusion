@@ -23,3 +23,6 @@ console.log(aCapit)
 
 let synonyms = ["plethora", "array", "cornucopia"];
 console.log(synonyms);
+
+let lastItem = synonyms.pop();
+console.log(lastItem)

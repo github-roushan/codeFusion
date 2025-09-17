@@ -39,3 +39,13 @@ console.log(operands);
 
 // we can a new property on object
 js.creator = "Brendan Eich";
+
+const dog = {
+    name: "Ein",
+    breed: "Corgi",
+    speak: function() {
+        console.log("woof woof");
+    }
+}
+
+dog.speak();

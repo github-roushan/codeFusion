@@ -68,5 +68,10 @@ const yell = function (saying) {
 }
 
 console.log(yell("foo bar"))
-
 var newVarible = "hello"
+{
+    // newVariable changed (due to var) (but would not for let)
+    newVarible = "changed"
+}
+
+console.log(newVarible)

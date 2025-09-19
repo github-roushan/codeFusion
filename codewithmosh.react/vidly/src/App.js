@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import MovieTable from './components/movieTable';
+import React, {useState} from 'react';
 
 function App() {
+  const [movieCount, setMovieCount] = useState(0);
+
+  const handleMovieUpdate = (totalMovies) => {
+    setMovieCount(totalMovies);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+    <main className="container">
+      {movieCount === 0 && <h1> There are no movies in the Database </h1>}
+      {movieCount !==0 && <h1>Showing {movieCount} Movies in Database</h1> } 
+    </main>
+    <MovieTable onUpdate={handleMovieUpdate}/>
+    </React.Fragment>
   );
 }
 

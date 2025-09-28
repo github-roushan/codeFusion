@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
+import Like from './common/like';
 
 class MovieTable extends Component {
     constructor(props){
@@ -35,6 +36,7 @@ class MovieTable extends Component {
                 <th className="w-10">Stock</th>
                 <th className="w-10">Rate</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>;
     }
@@ -54,6 +56,7 @@ class MovieTable extends Component {
                     <td className="w-25">{movie.genre.name}</td>
                     <td className="w-10">{movie.numberInStock}</td>
                     <td className="w-10">{movie.dailyRentalRate}</td>
+                    <td> <Like /> </td>
                     <td>
                         <button className="btn btn-danger btn-lg" onClick={()=>this.handleDelete(movie._id)}>
                             Delete

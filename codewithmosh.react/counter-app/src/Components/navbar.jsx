@@ -1,11 +1,12 @@
 import React from 'react';
 
-const NavBar = () => {
+const NavBar = (props) => {
+    console.log(props)
     return (
         <nav className="navbar navbar-light bg-light">
-            <a className="navbar-brand" href="#">
-                Navbar <span className="badge badge-pill badge-secondary">{this.props.totalCounters}</span>
-            </a>
+            <div className="navbar-brand" href="#">
+                Navbar <span className="badge badge-pill badge-secondary">{props.totalCounters}</span>
+            </div>
         </nav>
     );
 };

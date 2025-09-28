@@ -14,14 +14,14 @@ class App extends Component {
     }; 
 
     handleDelete = (counterId) => {
-        const newCounters = this.state.counters.filter(c => c.id != counterId);
+        const newCounters = this.state.counters.filter(c => c.id !== counterId);
         this.setState({ counters: newCounters})
     }
 
     handleIncrement = (counter) => {
         const counters = [...this.state.counters];
         const index = counters.indexOf(counter);
-        if(index == -1) return;
+        if(index === -1) return;
         counters[index] = {...counter};
         counters[index].value++;
         this.setState({ counters })   

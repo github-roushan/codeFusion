@@ -16,9 +16,25 @@ class Counters extends Component {
         const newCounters = this.state.counters.filter(c => c.id != counterId);
         this.setState({ counters: newCounters})
     }
+
+    resetCounters = () => {
+        const counters = this.state.counters.map(c => {
+            c.value = 0;
+            return c;
+        });
+        console.log(counters);
+        this.setState({ counters });
+        console.log("Here I am");
+    }
     render() { 
         return (
             <div style = {{ margin: 20}}>
+                <button 
+                    className="btn btn-primary btn-sm m-2"
+                    onClick = {this.resetCounters}
+                >
+                    Reset
+                </button>
                 { this.state.counters.map(counter => 
                     <Counter key={counter.id} onDelete={this.handleDelete} counter={counter} />
                 )}

@@ -1,16 +1,26 @@
 import React, {Component} from 'react';
 import Like from './common/like';
+import TableHeader from './common/tableHeader';
 
 class MoviesTable extends Component {
+    columns = [
+        {columnPath: "title", name: "Title"},
+        {columnPath: "genre.name", name: "Genre"},
+        {columnPath: "numberInStock", name: "Stock"},
+        {columnPath: "dailyRentalRate", name: "Rate"},
+        {columnPath: "like", name: ""},
+        {columnPath: "delete", name: ""}
+    ];
 
-    raiseSort = sortByColumn => {
+    raiseSort = columnPath => {
         const { sortConfig } = this.props;
-        if(sortConfig.sortByColumn === sortByColumn) {
+        if(sortConfig.columnPath === columnPath) {
             sortConfig.order = sortConfig.order === "asc" ? "desc" : "asc";
         } else {
-            sortConfig.sortByColumn = sortByColumn;
+            sortConfig.columnPath = columnPath;
             sortConfig.order = "asc";
         }
+        console.log("Movies Table", sortConfig);
         this.props.onSort(sortConfig);
     }
 
@@ -18,7 +28,7 @@ class MoviesTable extends Component {
         const {movies} = this.props;
         return (
             <table className="table table-hover">
-                {this.getTableHeader()}
+                <TableHeader columns={this.columns} sortConfig={this.props.sortConfig} onSort={this.props.onSort} />
                 {this.getTableBody(movies)}
             </table>
         );

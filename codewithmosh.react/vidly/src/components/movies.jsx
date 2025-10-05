@@ -10,10 +10,10 @@ class Movies extends Component {
         super(props)
         this.state = {
             movies: [],
-            pageSize: 4,
+            pageSize: 100,
             currentPage: 1,
             genres: [],
-            sortConfig: {sortByColumn: "title", order: "asc"}
+            sortConfig: {columnPath: "title", order: "asc"}
         };
     }
 
@@ -71,12 +71,12 @@ class Movies extends Component {
 
         const sortedMovies = [...movieList].sort((a, b) => {
             let comparison = 0;  
-            if (sortConfig.sortByColumn === "title") {
+            if (sortConfig.columnPath === "title") {
                 comparison = a.title.localeCompare(b.title);
-            } else if (sortConfig.sortByColumn === "genre.name") {
+            } else if (sortConfig.columnPath === "genre.name") {
                 comparison = a.genre.name.localeCompare(b.genre.name);
             } else {
-                comparison = a[sortConfig.sortByColumn] - b[sortConfig.sortByColumn];
+                comparison = a[sortConfig.columnPath] - b[sortConfig.columnPath];
             }
             return sortConfig.order === "desc" ? -comparison : comparison;
         });
@@ -119,7 +119,7 @@ class Movies extends Component {
     };
 
     handleSort = sortConfig => {
-        this.setState({sortConfig });
+        this.setState({ sortConfig });
     }
 }
 

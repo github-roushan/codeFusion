@@ -2,6 +2,18 @@ import React, {Component} from 'react';
 import Like from './common/like';
 
 class MoviesTable extends Component {
+
+    raiseSort = sortByColumn => {
+        const { sortConfig } = this.props;
+        if(sortConfig.sortByColumn === sortByColumn) {
+            sortConfig.order = sortConfig.order === "asc" ? "desc" : "asc";
+        } else {
+            sortConfig.sortByColumn = sortByColumn;
+            sortConfig.order = "asc";
+        }
+        this.props.onSort(sortConfig);
+    }
+
     render() {
         const {movies} = this.props;
         return (
@@ -13,14 +25,13 @@ class MoviesTable extends Component {
     }
 
     getTableHeader = () => {
-        const { onSort } = this.props;
         return (
             <thead>
                 <tr>
-                    <th onClick={() => onSort('title')} className="w-25">Title</th>
-                    <th onClick={() => onSort('genre.name')} className="w-25">Genre</th>
-                    <th onClick={() => onSort('numberInStock')} className="w-10">Stock</th>
-                    <th onClick={() => onSort('dailyRentalRate')} className="w-10">Rate</th>
+                    <th onClick={() => this.raiseSort('title')} className="w-25">Title</th>
+                    <th onClick={() => this.raiseSort('genre.name')} className="w-25">Genre</th>
+                    <th onClick={() => this.raiseSort('numberInStock')} className="w-10">Stock</th>
+                    <th onClick={() => this.raiseSort('dailyRentalRate')} className="w-10">Rate</th>
                     <th></th>
                     <th></th>
                 </tr>

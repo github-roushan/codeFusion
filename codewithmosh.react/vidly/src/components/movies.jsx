@@ -27,7 +27,7 @@ class Movies extends Component {
 
     render() {
         const { length: totalMovies } = this.state.movies;
-        const { pageSize, currentPage } = this.state;
+        const { pageSize, currentPage, sortConfig } = this.state;
         if (totalMovies === 0) return null;
 
         const filteredMovies = this.getFilteredMovies();
@@ -46,6 +46,7 @@ class Movies extends Component {
                 <div className="col">
                     <MoviesTable 
                         movies={finalMoviesList}
+                        sortConfig={sortConfig}
                         onDelete={this.handleDelete}
                         onSort={this.handleSort}
                     />
@@ -117,14 +118,7 @@ class Movies extends Component {
         });
     };
 
-    handleSort = sortByColumn => {
-        const { sortConfig } = this.state;
-        if(sortConfig.sortByColumn === sortByColumn) {
-            sortConfig.order = sortConfig.order === "asc" ? "desc" : "asc";
-        } else {
-            sortConfig.sortByColumn = sortByColumn;
-            sortConfig.order = "asc";
-        }
+    handleSort = sortConfig => {
         this.setState({sortConfig });
     }
 }

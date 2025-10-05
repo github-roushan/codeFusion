@@ -2,14 +2,15 @@ import React from 'react';
 import Like from './common/like';
 
 const MoviesTable = (props) => {
+    const {movies, onDelete, onSort} = props;
     const getTableHeader = () => {
         return (
             <thead>
                 <tr>
-                    <th className="w-25">Title</th>
-                    <th className="w-25">Genre</th>
-                    <th className="w-10">Stock</th>
-                    <th className="w-10">Rate</th>
+                    <th onClick={() => onSort('title')} className="w-25">Title</th>
+                    <th onClick={() => onSort('genre.name')} className="w-25">Genre</th>
+                    <th onClick={() => onSort('numberInStock')} className="w-10">Stock</th>
+                    <th onClick={() => onSort('dailyRentalRate')} className="w-10">Rate</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -18,8 +19,6 @@ const MoviesTable = (props) => {
     };
 
     const getTableBody = movies => {
-        const {onDelete} = props;
-        console.log("In MoviesTable onDelete", onDelete);
         return (
             <tbody>
                 {movies.map(movie => (
@@ -43,7 +42,7 @@ const MoviesTable = (props) => {
     return (
         <table className="table table-hover">
             {getTableHeader()}
-            {getTableBody(props.movies)}
+            {getTableBody(movies)}
         </table>
     );
 };

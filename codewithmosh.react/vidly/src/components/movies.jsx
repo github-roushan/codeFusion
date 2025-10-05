@@ -12,7 +12,8 @@ class Movies extends Component {
             movies: [],
             pageSize: 4,
             currentPage: 1,
-            genres: []
+            genres: [],
+            sortConfig: {sortByColumn: "title", order: "asc"}
         };
     }
 
@@ -30,6 +31,9 @@ class Movies extends Component {
         if (totalMovies === 0) return null;
 
         const filteredMovies = this.getFilteredMovies();
+        const sortedMovies = this.getSortedMovies(filteredMovies);
+        const finalMoviesList = this.getPaginatedMovies(sortedMovies);
+
         return (
             <div className="row">
                 <div className="col-3">
@@ -41,11 +45,12 @@ class Movies extends Component {
                 </div>
                 <div className="col">
                     <MoviesTable 
-                        movies={filteredMovies}
+                        movies={finalMoviesList}
                         onDelete={this.handleDelete}
+                        onSort={this.handleSort}
                     />
                     <Pagination
-                        itemsCount={filteredMovies.length}
+                        itemsCount={sortedMovies.length}
                         pageSize={pageSize}
                         currentPage={currentPage}
                         onPageChange={this.handlePageChange}
@@ -60,8 +65,34 @@ class Movies extends Component {
         return selectedGenre && selectedGenre._id ? movies.filter(m => m.genre._id === selectedGenre._id) : movies;
     }
 
+    getSortedMovies(movieList) {
+        const { sortConfig } = this.state;
+
+        const sortedMovies = [...movieList].sort((a, b) => {
+            let comparison = 0;  
+            if (sortConfig.sortByColumn === "title") {
+                comparison = a.title.localeCompare(b.title);
+            } else if (sortConfig.sortByColumn === "genre.name") {
+                comparison = a.genre.name.localeCompare(b.genre.name);
+            } else {
+                comparison = a[sortConfig.sortByColumn] - b[sortConfig.sortByColumn];
+            }
+            return sortConfig.order === "desc" ? -comparison : comparison;
+        });
+    
+        return sortedMovies;
+    }
+    
+
+    getPaginatedMovies(movies) {
+        const {currentPage, pageSize} = this.state;
+        const startInd = (currentPage - 1) * pageSize;
+        const endInd = startInd + pageSize;
+
+        return movies.slice(startInd, endInd);
+    }
+
     handleDelete = (movieId) => {
-        console.log("Deleted", movieId)
         const { movies, selectedGenre, pageSize, currentPage } = this.state;
 
         const updatedMovies = movies.filter(m => m._id !== movieId);
@@ -85,6 +116,17 @@ class Movies extends Component {
             this.props.onUpdate(this.getFilteredMovies().length);
         });
     };
+
+    handleSort = sortByColumn => {
+        const { sortConfig } = this.state;
+        if(sortConfig.sortByColumn === sortByColumn) {
+            sortConfig.order = sortConfig.order === "asc" ? "desc" : "asc";
+        } else {
+            sortConfig.sortByColumn = sortByColumn;
+            sortConfig.order = "asc";
+        }
+        this.setState({sortConfig });
+    }
 }
 
 export default Movies;

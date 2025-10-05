@@ -10,7 +10,7 @@ class Movies extends Component {
         super(props)
         this.state = {
             movies: [],
-            pageSize: 100,
+            pageSize: 4,
             currentPage: 1,
             genres: [],
             sortConfig: {columnPath: "title", order: "asc"}

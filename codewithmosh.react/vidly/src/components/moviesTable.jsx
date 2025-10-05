@@ -1,20 +1,32 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Like from './common/like';
 import TableHeader from './common/tableHeader';
+import TableBody from './common/tableBody';
 
 class MoviesTable extends Component {
     columns = [
-        {columnPath: "title", name: "Title"},
-        {columnPath: "genre.name", name: "Genre"},
-        {columnPath: "numberInStock", name: "Stock"},
-        {columnPath: "dailyRentalRate", name: "Rate"},
-        {columnPath: "like", name: ""},
-        {columnPath: "delete", name: ""}
+        { columnPath: "title", name: "Title" },
+        { columnPath: "genre.name", name: "Genre" },
+        { columnPath: "numberInStock", name: "Stock" },
+        { columnPath: "dailyRentalRate", name: "Rate" },
+        { columnPath: "like", name: "", content: item => <Like /> },
+        {
+            columnPath: "delete",
+            name: "", 
+            content: movie => (
+                <button 
+                    className="btn btn-danger btn-lg" 
+                    onClick={() => this.props.onDelete(movie._id)}
+                >
+                    Delete
+                </button>
+            )
+        }
     ];
 
     raiseSort = columnPath => {
         const { sortConfig } = this.props;
-        if(sortConfig.columnPath === columnPath) {
+        if (sortConfig.columnPath === columnPath) {
             sortConfig.order = sortConfig.order === "asc" ? "desc" : "asc";
         } else {
             sortConfig.columnPath = columnPath;
@@ -25,11 +37,12 @@ class MoviesTable extends Component {
     }
 
     render() {
-        const {movies} = this.props;
+        const { movies } = this.props;
         return (
             <table className="table table-hover">
                 <TableHeader columns={this.columns} sortConfig={this.props.sortConfig} onSort={this.props.onSort} />
-                {this.getTableBody(movies)}
+                {/* {this.getTableBody(movies)} */}
+                <TableBody data={movies} columns={this.columns} onDelete={this.props.onDelete} />
             </table>
         );
     }

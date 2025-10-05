@@ -9,7 +9,7 @@ const Pagination = props => {
         <nav aria-label="Page navigation example">
             <ul className="pagination">
                 <li key="prev" className="page-item">
-                    <a className="page-link" href="#">Previous</a>
+                    <a className="page-link" href="#">Prev</a>
                 </li>
                 {pages.map(page => 
                     <li key={page} className={page === currentPage ? 'page-item active': 'page-item'}>

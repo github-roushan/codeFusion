@@ -12,7 +12,7 @@ const ListGroup = ({
             {items.map(item => 
                 <li 
                     onClick={ () => onItemSelect(item) } 
-                    key={item[valueProperty]} 
+                    key={item[valueProperty] === undefined? "_all-genre": item[valueProperty]} 
                     className={item === selectedItem? 'list-group-item active': 'list-group-item' }
                 >
                     {item[textProperty]}

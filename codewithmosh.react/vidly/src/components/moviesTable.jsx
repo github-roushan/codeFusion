@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Like from './common/like';
 
-const MoviesTable = (props) => {
-    const {movies, onDelete, onSort} = props;
-    const getTableHeader = () => {
+class MoviesTable extends Component {
+    render() {
+        const {movies} = this.props;
+        return (
+            <table className="table table-hover">
+                {this.getTableHeader()}
+                {this.getTableBody(movies)}
+            </table>
+        );
+    }
+
+    getTableHeader = () => {
+        const { onSort } = this.props;
         return (
             <thead>
                 <tr>
@@ -18,7 +28,8 @@ const MoviesTable = (props) => {
         );
     };
 
-    const getTableBody = movies => {
+    getTableBody = movies => {
+        const { onDelete } = this.props;
         return (
             <tbody>
                 {movies.map(movie => (
@@ -38,13 +49,6 @@ const MoviesTable = (props) => {
             </tbody>
         );
     }
-
-    return (
-        <table className="table table-hover">
-            {getTableHeader()}
-            {getTableBody(movies)}
-        </table>
-    );
-};
+}
 
 export default MoviesTable;

@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Pagination = props => {
-    const {itemsCount, pageSize, currentPage, onPageChange} = props;
+const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
     const totalPages = Math.ceil(itemsCount / pageSize);
-
     const pages = Array.from({length: totalPages}, (_, i) => i+1);
     return (
         <nav aria-label="Page navigation example">

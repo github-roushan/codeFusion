@@ -41,46 +41,8 @@ class MoviesTable extends Component {
         return (
             <table className="table table-hover">
                 <TableHeader columns={this.columns} sortConfig={this.props.sortConfig} onSort={this.props.onSort} />
-                {/* {this.getTableBody(movies)} */}
                 <TableBody data={movies} columns={this.columns} onDelete={this.props.onDelete} />
             </table>
-        );
-    }
-
-    getTableHeader = () => {
-        return (
-            <thead>
-                <tr>
-                    <th onClick={() => this.raiseSort('title')} className="w-25">Title</th>
-                    <th onClick={() => this.raiseSort('genre.name')} className="w-25">Genre</th>
-                    <th onClick={() => this.raiseSort('numberInStock')} className="w-10">Stock</th>
-                    <th onClick={() => this.raiseSort('dailyRentalRate')} className="w-10">Rate</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-        );
-    };
-
-    getTableBody = movies => {
-        const { onDelete } = this.props;
-        return (
-            <tbody>
-                {movies.map(movie => (
-                    <tr key={movie._id}>
-                        <td className="w-25 ">{movie.title}</td>
-                        <td className="w-25">{movie.genre.name}</td>
-                        <td className="w-10">{movie.numberInStock}</td>
-                        <td className="w-10">{movie.dailyRentalRate}</td>
-                        <td> <Like /> </td>
-                        <td>
-                            <button className="btn btn-danger btn-lg" onClick={() => onDelete(movie._id)}>
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
         );
     }
 }

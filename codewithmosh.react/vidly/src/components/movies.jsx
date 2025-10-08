@@ -13,7 +13,8 @@ class Movies extends Component {
             pageSize: 4,
             currentPage: 1,
             genres: [],
-            sortConfig: {columnPath: "title", order: "asc"}
+            sortConfig: {columnPath: "title", order: "asc"},
+            likedMovies: new Set()
         };
     }
 
@@ -34,7 +35,7 @@ class Movies extends Component {
 
     render() {
         const { length: totalMovies } = this.state.movies;
-        const { pageSize, currentPage, sortConfig } = this.state;
+        const { pageSize, currentPage, sortConfig, likedMovies } = this.state;
         if (totalMovies === 0) return null;
 
         const {dataCount, data} = this.getPageData();
@@ -54,6 +55,8 @@ class Movies extends Component {
                         sortConfig={sortConfig}
                         onDelete={this.handleDelete}
                         onSort={this.handleSort}
+                        likedMovies={likedMovies}
+                        onLikeToggle={this.handleLikeToggle}
                     />
                     <Pagination
                         itemsCount={dataCount}
@@ -126,6 +129,19 @@ class Movies extends Component {
     handleSort = sortConfig => {
         this.setState({ sortConfig });
     }
+
+    handleLikeToggle = (movieId) => {
+        const { likedMovies } = this.state;
+        const newLikedMovies = new Set(likedMovies);
+        
+        if (newLikedMovies.has(movieId)) {
+            newLikedMovies.delete(movieId);
+        } else {
+            newLikedMovies.add(movieId);
+        }
+        
+        this.setState({ likedMovies: newLikedMovies });
+    };
 }
 
 export default Movies;

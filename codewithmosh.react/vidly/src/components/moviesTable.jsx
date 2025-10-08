@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Like from './common/like';
 import TableHeader from './common/tableHeader';
 import TableBody from './common/tableBody';
+import Table from './common/table';
 
 class MoviesTable extends Component {
     columns = [
@@ -24,25 +25,15 @@ class MoviesTable extends Component {
         }
     ];
 
-    raiseSort = columnPath => {
-        const { sortConfig } = this.props;
-        if (sortConfig.columnPath === columnPath) {
-            sortConfig.order = sortConfig.order === "asc" ? "desc" : "asc";
-        } else {
-            sortConfig.columnPath = columnPath;
-            sortConfig.order = "asc";
-        }
-        console.log("Movies Table", sortConfig);
-        this.props.onSort(sortConfig);
-    }
-
     render() {
-        const { movies } = this.props;
+        const { movies, sortConfig, onSort } = this.props;
         return (
-            <table className="table table-hover">
-                <TableHeader columns={this.columns} sortConfig={this.props.sortConfig} onSort={this.props.onSort} />
-                <TableBody data={movies} columns={this.columns} />
-            </table>
+            <Table 
+                columns = {this.columns}
+                data = {movies}
+                onSort = {onSort}
+                sortConfig = {sortConfig}
+            />
         );
     }
 }

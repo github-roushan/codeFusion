@@ -41,7 +41,7 @@ class MoviesTable extends Component {
         return (
             <table className="table table-hover">
                 <TableHeader columns={this.columns} sortConfig={this.props.sortConfig} onSort={this.props.onSort} />
-                <TableBody data={movies} columns={this.columns} onDelete={this.props.onDelete} />
+                <TableBody data={movies} columns={this.columns} />
             </table>
         );
     }

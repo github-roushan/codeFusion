@@ -4,7 +4,7 @@ import _ from "lodash";
 class TableBody extends Component {
 
     renderCell = (item, column) => {
-        if (column.content) return column.createEle(item);
+        if (column.createEle) return column.createEle(item);
         return _.get(item, column.columnPath);
     }
 

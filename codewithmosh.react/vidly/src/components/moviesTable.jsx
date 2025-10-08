@@ -9,11 +9,11 @@ class MoviesTable extends Component {
         { columnPath: "genre.name", name: "Genre" },
         { columnPath: "numberInStock", name: "Stock" },
         { columnPath: "dailyRentalRate", name: "Rate" },
-        { columnPath: "like", name: "", content: item => <Like /> },
+        { columnPath: "like", name: "", createEle: item => <Like /> },
         {
             columnPath: "delete",
             name: "", 
-            content: movie => (
+            createEle: movie => (
                 <button 
                     className="btn btn-danger btn-lg" 
                     onClick={() => this.props.onDelete(movie._id)}

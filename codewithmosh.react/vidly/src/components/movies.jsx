@@ -25,14 +25,19 @@ class Movies extends Component {
         });
     }
 
+    getPageData = () => {
+        const filteredMovies = this.getFilteredMovies();
+        const sortedMovies = this.getSortedMovies(filteredMovies);
+        const finalMoviesList = this.getPaginatedMovies(sortedMovies);
+        return {dataCount: sortedMovies.length, data: finalMoviesList};
+    }
+
     render() {
         const { length: totalMovies } = this.state.movies;
         const { pageSize, currentPage, sortConfig } = this.state;
         if (totalMovies === 0) return null;
 
-        const filteredMovies = this.getFilteredMovies();
-        const sortedMovies = this.getSortedMovies(filteredMovies);
-        const finalMoviesList = this.getPaginatedMovies(sortedMovies);
+        const {dataCount, data} = this.getPageData();
 
         return (
             <div className="row">
@@ -45,13 +50,13 @@ class Movies extends Component {
                 </div>
                 <div className="col">
                     <MoviesTable 
-                        movies={finalMoviesList}
+                        movies={data}
                         sortConfig={sortConfig}
                         onDelete={this.handleDelete}
                         onSort={this.handleSort}
                     />
                     <Pagination
-                        itemsCount={sortedMovies.length}
+                        itemsCount={dataCount}
                         pageSize={pageSize}
                         currentPage={currentPage}
                         onPageChange={this.handlePageChange}

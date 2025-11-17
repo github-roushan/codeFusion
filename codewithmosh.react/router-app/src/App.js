@@ -3,6 +3,7 @@ import Products from './components/products';
 import Posts from './components/posts';
 import Admin from './components/admin';
 import Home from './components/home';
+import ProductDetails from './components/ProductDetails';
 import { Route, Routes, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -21,10 +22,11 @@ class App extends Component {
         
         <div className="content">
           <Routes>
+            <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:year?/:month?" element={<Posts />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>

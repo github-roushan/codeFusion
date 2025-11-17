@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { useParams, useLocation, useSearchParams, useMatch /*, useMatches */ } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 class Posts extends Component {
     render() { 
-        const { year, month } = this.props;
+        const { year, month, params } = this.props;
+        console.log(params);
+        const {sortby, level} = params;
+        console.log(sortby, level);
         return (
             <div>
                 <h1>
@@ -17,32 +20,10 @@ class Posts extends Component {
 
 function PostsWrapper() {
   const { year, month } = useParams();
-  const location = useLocation();
   const [searchParams] = useSearchParams();
+  const queryStrings =  Object.fromEntries(searchParams);
 
-  // match is null if the current URL doesn't match this pattern
-  const match = useMatch('/posts/:year?/:month?');
-
-  // If you switch to the data router (createBrowserRouter), you can use:
-  // const matches = useMatches(); // array of matched routes with params/route info
-
-  console.log({
-    params: { year, month },
-    pathname: location.pathname,
-    search: location.search,
-    hash: location.hash,
-    state: location.state,
-    query: Object.fromEntries(searchParams),
-    match: match && {
-      params: match.params,
-      pathname: match.pathname,
-      pathnameBase: match.pathnameBase,
-      pattern: match.pattern.path
-    },
-    // matches // uncomment when using data router
-  });
-
-  return <Posts year={year} month={month} />;
+  return <Posts year={year} month={month} params={queryStrings} />;
 }
 
 export default PostsWrapper;

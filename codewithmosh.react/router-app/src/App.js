@@ -4,6 +4,7 @@ import Posts from './components/posts';
 import Admin from './components/admin';
 import Home from './components/home';
 import ProductDetails from './components/ProductDetails';
+import NotFound from './components/NotFound';
 import { Route, Routes, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -23,11 +24,12 @@ class App extends Component {
         <div className="content">
           <Routes>
             <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/posts/:year?/:month?" element={<Posts />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>

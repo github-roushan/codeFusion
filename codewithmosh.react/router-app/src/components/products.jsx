@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Products extends Component {
-    state = {}
+    state = {
+        products: [
+            {id: 1, name: "Product 1"},
+            {id: 2, name: "Product 2"},
+            {id: 3, name: "Product 3"},
+        ]
+    };
     render() {
         return (
             <div>
                 <h1>Products</h1>
                 <ul>
-                    <li><Link to="/products/1">Product 1</Link></li>
-                    <li><Link to="/products/2">Product 2</Link></li>
-                    <li><Link to="/products/3">Product 3</Link></li>
+                {this.state.products.map(product => 
+                    <li key={product.id}>
+                        <Link to={`/products/${product.id}`}> {product.name}</Link>
+                    </li>
+                )}
                 </ul>
             </div>
         );

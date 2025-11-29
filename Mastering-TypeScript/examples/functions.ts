@@ -26,3 +26,12 @@ function rando(num: number) {
     return num;
 }
 console.log(rando(2));
+
+
+function printTwice(msg: string): void {
+    console.log(msg);
+    console.log(msg);
+}
+printTwice("Hello");
+
+

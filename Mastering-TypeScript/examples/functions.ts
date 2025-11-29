@@ -13,8 +13,8 @@ const add = (a: number, b: number) => {
 }
 console.log(add(2, 3));
 
-const doSomething = (person: string, age: number) => {
-    console.log("Doing something");
+const doSomething = (person: string = "Stranger") => {
+    console.log(`${person} please Do something`);
 }
 
-doSomething("FunnyFace", 20);
+doSomething("FunnyFace");

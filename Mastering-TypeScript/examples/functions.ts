@@ -18,3 +18,11 @@ const doSomething = (person: string = "Stranger") => {
 }
 
 doSomething("FunnyFace");
+
+function rando(num: number) {
+    if (Math.random() < 0.5) {
+        return num.toString();
+    }
+    return num;
+}
+console.log(rando(2));

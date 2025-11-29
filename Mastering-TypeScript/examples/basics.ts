@@ -6,3 +6,4 @@ console.log(Math.round(2.5));
 
 // type inference
 let x = 325;
+let tvShow = "Friends";

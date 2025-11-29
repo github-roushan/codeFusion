@@ -1,4 +1,4 @@
-function square(num: number) {
+function square(num: number): number {
     return num * num;
 }
 

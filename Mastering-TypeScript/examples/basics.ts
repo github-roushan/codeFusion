@@ -7,3 +7,16 @@ console.log(Math.round(2.5));
 // type inference
 let x = 325;
 let tvShow = "Friends";
+let nothing = null;
+
+const movies = ["Arrival", "Amadeus", "The Dark Knight"]
+let foundMovie: string = "";
+
+for (let movie of movies) {
+    if (movie === "Amadeus") {
+        foundMovie = "Amadeus";
+    }
+}
+
+console.log(typeof foundMovie);
+console.log(foundMovie);

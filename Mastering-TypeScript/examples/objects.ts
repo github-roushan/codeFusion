@@ -12,3 +12,9 @@ printName({ first: "Roushan", last: "Singh" });
 
 
 let coordinates: { x: number, y: number } = { x: 10, y: 20 };
+
+function randomCoordinate(): { x: number, y: number } {
+    return { x: Math.random(), y: Math.random() };
+}
+
+console.log(randomCoordinate());

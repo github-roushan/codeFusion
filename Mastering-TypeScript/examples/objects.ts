@@ -49,3 +49,18 @@ type Point = {
 
 const myPoint: Point = { x: 0, y: 0 };
 console.log(myPoint);
+
+// Read Only Properties
+type User = {
+    readonly id: number;
+    username: string;
+};
+
+const user: User = {
+    id: 9973,
+    username: "roushanksingh"
+};
+
+console.log(user);
+// below is illegal
+// user.id = 12;

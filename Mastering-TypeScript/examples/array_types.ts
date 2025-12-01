@@ -13,6 +13,15 @@ let names: Array<string> = [];
 names.push("Roushan");
 console.log(names);
 
+// Array of custome types
+
 const coords: Point[] = [];
 coords.push({ x: 1, y: 2 });
 console.log(coords);
+
+// Multi Dimensional Array
+const board: string[][] = [];
+board.push(["X", "O", "X"]);
+board.push(["X", "O", "X"]);
+board.push(["X", "O", "X"]);
+console.log(board);

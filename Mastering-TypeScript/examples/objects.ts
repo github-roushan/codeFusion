@@ -39,3 +39,13 @@ type Coord = {
 function doublePoint(point: Coord): Coord {
     return { x: 2 * point.x, y: 2 * point.y }
 }
+
+// Optional Properties
+type Point = {
+    x: number;
+    y: number;
+    z?: number;
+};
+
+const myPoint: Point = { x: 0, y: 0 };
+console.log(myPoint);

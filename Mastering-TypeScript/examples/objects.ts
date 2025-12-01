@@ -30,3 +30,12 @@ printName(singer);
 
 // Below Fails as it complains to specify only known parameters
 // printName({ first: "Much", last: "Needed", age: 25, isAlive: true });
+
+type Coord = {
+    x: number;
+    y: number;
+};
+
+function doublePoint(point: Coord): Coord {
+    return { x: 2 * point.x, y: 2 * point.y }
+}

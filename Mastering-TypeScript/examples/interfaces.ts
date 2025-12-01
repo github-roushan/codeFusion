@@ -26,3 +26,20 @@ const person2: Person = {
 };
 
 wishBirthday(person);
+
+interface IProduct {
+    name: string,
+    price: number,
+    applyDiscount(discount: number): number
+};
+
+const shoes: IProduct = {
+    name: "Nike",
+    price: 100,
+    applyDiscount(discount: number) {
+        return this.price * (1 - discount);
+    }
+};
+
+const discountedPrice = shoes.applyDiscount(0.3);
+console.log(discountedPrice);

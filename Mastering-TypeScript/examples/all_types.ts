@@ -4,3 +4,8 @@ export type Point = {
     y: number;
     z?: number;
 };
+
+export type Loc = {
+    lat: number;
+    long: number;
+};

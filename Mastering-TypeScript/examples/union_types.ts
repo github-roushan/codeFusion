@@ -30,3 +30,19 @@ const nums: any[] = [1, 2, 3, "four", true, { name: "John" }];
 // array of only number and strings
 const stuff: (number | string)[] = [1, 2, 3, "four"];
 const locations: (Point | Loc)[] = [{ x: 1, y: 2 }, { lat: 1, long: 3 }];
+
+
+// Literal Types
+const zero: 0 = 0;
+let mood: "happy" | "sad" = "happy";
+
+type DayOfWeek =
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | "Sunday";
+
+let today = "Monday";

@@ -43,3 +43,25 @@ const shoes: IProduct = {
 
 const discountedPrice = shoes.applyDiscount(0.3);
 console.log(discountedPrice);
+
+//Interface Reopening
+interface IDog {
+    name: string;
+    age: number;
+}
+
+// We can add more properties in above interface as below
+// This doesn't create a new interface, it just extends the above interface
+interface IDog {
+    breed: string;
+    bark(): string;
+}
+
+const elton: IDog = {
+    name: "Elton",
+    age: 0.5,
+    breed: "Australian",
+    bark() {
+        return "Bark";
+    }
+}

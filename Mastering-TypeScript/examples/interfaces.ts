@@ -65,3 +65,18 @@ const elton: IDog = {
         return "Bark";
     }
 }
+
+// extending interfaces
+interface ServiceDog extends IDog {
+    job: "drug sniffer" | "bomb" | "guide dog";
+}
+
+const chewy: ServiceDog = {
+    name: "Chewy",
+    age: 4.5,
+    breed: "Labrador",
+    bark() {
+        return "Bark HArd";
+    },
+    job: "guide dog"
+};

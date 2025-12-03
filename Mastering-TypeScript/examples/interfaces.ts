@@ -104,3 +104,8 @@ const engineer: Engineer = {
     level: "senior",
     languages: ["TypeScript", "JavaScript"]
 }
+
+// difference between interfaces and type aliases
+// interfaces are used to describe objects while type alias can describe things like "apple" | "ball"
+// interfaces can be reopned and types cannot
+// interfaces can be extended but types need to be intersection types

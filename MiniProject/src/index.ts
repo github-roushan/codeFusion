@@ -71,6 +71,7 @@ function createListTodo(todo: Todo) {
         localStorage.setItem("todos", JSON.stringify(todos));
     });
     checkbox.type = "checkbox";
+    checkbox.checked = todo.completed;
     li.append(checkbox);
     ul.appendChild(li);
 }

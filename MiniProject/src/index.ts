@@ -21,3 +21,12 @@ btn_sure.addEventListener("click", () => {
 // Type Assertion
 let mystery: unknown = "Hello World!!";
 const numChars = (mystery as string).length;
+
+const todoInput = document.getElementById("todoinput")! as HTMLInputElement;
+const todoButton = document.getElementById("btn")! as HTMLButtonElement;
+
+todoButton.addEventListener("click", () => {
+    const val = todoInput.value;
+    todoInput.value = "";
+    console.log(val);
+});

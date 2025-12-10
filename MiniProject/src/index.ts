@@ -66,6 +66,10 @@ function createListTodo(todo: Todo) {
     li.textContent = todo.text;
 
     const checkbox = document.createElement("input");
+    checkbox.addEventListener("change", () => {
+        todo.completed = checkbox.checked;
+        localStorage.setItem("todos", JSON.stringify(todos));
+    });
     checkbox.type = "checkbox";
     li.append(checkbox);
     ul.appendChild(li);

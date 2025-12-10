@@ -40,6 +40,7 @@ interface Todo {
 }
 
 const todos: Todo[] = loadTodos();
+todos.forEach(createListTodo);
 
 function loadTodos(): Todo[] {
     const todosJSON = localStorage.getItem("todos");

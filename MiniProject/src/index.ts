@@ -41,6 +41,11 @@ function handleSubmitForm(e: SubmitEvent) {
     const ul = document.getElementById("todolist")!;
     const li = document.createElement("li");
     li.textContent = todoValue;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    li.append(checkbox);
+
     ul.appendChild(li);
 }
 

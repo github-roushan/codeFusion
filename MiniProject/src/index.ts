@@ -1,34 +1,47 @@
-function printDouble(msg: string) {
-    console.log(msg);
-    console.log(msg);
-}
+// function printDouble(msg: string) {
+//     console.log(msg);
+//     console.log(msg);
+// }
 
-printDouble("Hello World");
-const btn = document.getElementById("btn");
-console.log(btn);
+// printDouble("Hello World");
+// const btn = document.getElementById("btn");
+// console.log(btn);
 
-// ? is called optional chaining operator
-btn?.addEventListener("click", () => {
-    console.log("Button Clicked");
-});
+// // ? is called optional chaining operator
+// btn?.addEventListener("click", () => {
+//     console.log("Button Clicked");
+// });
 
-// we can also use the non null assertion operator
-const btn_sure = document.getElementById("btn")!;
-btn_sure.addEventListener("click", () => {
-    console.log("Button Sure Clicked");
-});
+// // we can also use the non null assertion operator
+// const btn_sure = document.getElementById("btn")!;
+// btn_sure.addEventListener("click", () => {
+//     console.log("Button Sure Clicked");
+// });
 
-// Type Assertion
-let mystery: unknown = "Hello World!!";
-const numChars = (mystery as string).length;
+// // Type Assertion
+// let mystery: unknown = "Hello World!!";
+// const numChars = (mystery as string).length;
 
 const todoInput = document.getElementById("todoinput")! as HTMLInputElement;
 const todoButton = document.getElementById("btn")! as HTMLButtonElement;
 // other way to do Assertion is
 // (<HTMLButtonElement>todoButton).addEventListener("click", () => {});
 
-todoButton.addEventListener("click", () => {
-    const val = todoInput.value;
+// todoButton.addEventListener("click", () => {
+//     const val = todoInput.value;
+//     todoInput.value = "";
+//     console.log(val);
+// });
+const form = document.querySelector("form");
+function handleSubmitForm(e: SubmitEvent) {
+    e.preventDefault();
+    console.log(e);
+    const todoValue = todoInput.value;
     todoInput.value = "";
-    console.log(val);
-});
+    const ul = document.getElementById("todolist")!;
+    const li = document.createElement("li");
+    li.textContent = todoValue;
+    ul.appendChild(li);
+}
+
+form?.addEventListener("submit", handleSubmitForm);

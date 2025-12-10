@@ -33,19 +33,32 @@ const todoButton = document.getElementById("btn")! as HTMLButtonElement;
 //     console.log(val);
 // });
 const form = document.querySelector("form");
+
+interface Todo {
+    text: string;
+    completed: boolean;
+}
+const todos: Todo[] = [];
+
 function handleSubmitForm(e: SubmitEvent) {
     e.preventDefault();
-    console.log(e);
-    const todoValue = todoInput.value;
+    const newTodo: Todo = {
+        text: todoInput.value,
+        completed: false,
+    }
+    todos.push(newTodo);
+    createListTodo(newTodo);
     todoInput.value = "";
+}
+
+function createListTodo(todo: Todo) {
     const ul = document.getElementById("todolist")!;
     const li = document.createElement("li");
-    li.textContent = todoValue;
+    li.textContent = todo.text;
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     li.append(checkbox);
-
     ul.appendChild(li);
 }
 

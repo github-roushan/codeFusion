@@ -38,7 +38,14 @@ interface Todo {
     text: string;
     completed: boolean;
 }
-const todos: Todo[] = [];
+
+const todos: Todo[] = loadTodos();
+
+function loadTodos(): Todo[] {
+    const todosJSON = localStorage.getItem("todos");
+    if (todosJSON === null) return [];
+    return JSON.parse(todosJSON);
+}
 
 function handleSubmitForm(e: SubmitEvent) {
     e.preventDefault();
@@ -47,6 +54,7 @@ function handleSubmitForm(e: SubmitEvent) {
         completed: false,
     }
     todos.push(newTodo);
+    localStorage.setItem("todos", JSON.stringify(todos));
     createListTodo(newTodo);
     todoInput.value = "";
 }

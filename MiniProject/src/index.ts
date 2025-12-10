@@ -17,3 +17,7 @@ const btn_sure = document.getElementById("btn")!;
 btn_sure.addEventListener("click", () => {
     console.log("Button Sure Clicked");
 });
+
+// Type Assertion
+let mystery: unknown = "Hello World!!";
+const numChars = (mystery as string).length;

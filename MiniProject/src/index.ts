@@ -24,6 +24,8 @@ const numChars = (mystery as string).length;
 
 const todoInput = document.getElementById("todoinput")! as HTMLInputElement;
 const todoButton = document.getElementById("btn")! as HTMLButtonElement;
+// other way to do Assertion is
+// (<HTMLButtonElement>todoButton).addEventListener("click", () => {});
 
 todoButton.addEventListener("click", () => {
     const val = todoInput.value;
